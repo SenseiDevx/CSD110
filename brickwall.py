@@ -1,75 +1,64 @@
-import turtle  # Импортируем модуль turtle, который помогает рисовать графику
+import turtle
 
-# Определяем глобальные переменные для ширины и высоты кирпичей
-BRICK_WIDTH = 60  # Ширина кирпича
-BRICK_HEIGHT = 30  # Высота кирпича
+BRICK_WIDTH = 60
+BRICK_HEIGHT = 30
 
-
-# Функция для настройки черепахи перед началом рисования
 
 def init_turtle():
-    turtle.speed(0)  # Устанавливаем скорость черепахи на максимальную
-    turtle.penup()  # Поднимаем перо, чтобы не рисовать линии во время перемещения
-    turtle.goto(-300, 300)  # Перемещаем черепаху в верхний левый угол
-    turtle.pendown()  # Опускаем перо, чтобы начать рисовать
+    turtle.speed(0)
+    turtle.penup()
+    turtle.goto(-300, 300)
+    turtle.pendown()
 
 
-# Функция для рисования прямоугольника с заданной шириной и высотой
-
-def draw_rectangle(width, height):
-    for i in range(2):  # Цикл из двух повторений (так как у прямоугольника две пары сторон)
-        turtle.forward(width)  # Двигаем черепаху вперед на ширину прямоугольника
-        turtle.right(90)  # Поворачиваем черепаху на 90 градусов вправо
-        turtle.forward(height)  # Двигаем черепаху вперед на высоту прямоугольника
-        turtle.right(90)  # Поворачиваем черепаху на 90 градусов вправо
-
-
-# Функция для рисования квадратного кирпича
-
-def draw_square(size):
-    draw_rectangle(size, size)  # Квадрат — это частный случай прямоугольника с равными сторонами
+# Function for drawing a rectangle with specified width and height
+def draw_a_rectangle(width, height):
+    for i in range(2):
+        turtle.forward(width)
+        turtle.right(90)
+        turtle.forward(height)
+        turtle.right(90)
 
 
-# Функция для рисования одного горизонтального ряда прямоугольных кирпичей
+# Function for draw a square
+def draw_a_square(size):
+    draw_a_rectangle(size, size)
 
+
+# Function for drawing a single horizontal row of rectangular bricks
 def draw_row(num_bricks):
-    for i in range(num_bricks):  # Повторяем для каждого кирпича в ряду
-        draw_rectangle(BRICK_WIDTH, BRICK_HEIGHT)  # Рисуем прямоугольный кирпич
-        turtle.forward(BRICK_WIDTH)  # Перемещаем черепаху вперед, чтобы нарисовать следующий кирпич
-    turtle.backward(num_bricks * BRICK_WIDTH)  # Возвращаем черепаху в начало ряда
+    for i in range(num_bricks):
+        draw_a_rectangle(BRICK_WIDTH, BRICK_HEIGHT)
+        turtle.forward(BRICK_WIDTH)
+    turtle.backward(num_bricks * BRICK_WIDTH)
 
 
-# Функция для рисования ряда кирпичей, которые расположены со смещением
-
+# Function to draw a row of bricks with an offset
 def draw_offset_row(num_bricks):
-    turtle.forward(BRICK_WIDTH / 2)  # Перемещаем черепаху немного вправо, чтобы начать со смещением
-    # draw_square(BRICK_HEIGHT)  # Рисуем квадратный кирпич в начале ряда
-    for i in range(num_bricks - 1):  # Повторяем для остальных кирпичей в ряду
-        draw_rectangle(BRICK_WIDTH, BRICK_HEIGHT)  # Рисуем прямоугольный кирпич
-        turtle.forward(BRICK_WIDTH)  # Перемещаем черепаху вперед
-    draw_square(BRICK_HEIGHT)  # Рисуем квадратный кирпич в конце ряда
-    turtle.backward((num_bricks - 1) * BRICK_WIDTH + BRICK_WIDTH // 2)  # Возвращаем черепаху в начало
+    turtle.forward(BRICK_WIDTH / 2)
+    for i in range(num_bricks - 1):
+        draw_a_rectangle(BRICK_WIDTH, BRICK_HEIGHT)
+        turtle.forward(BRICK_WIDTH)
+    draw_a_square(BRICK_HEIGHT)
+    turtle.backward((num_bricks - 1) * BRICK_WIDTH + BRICK_WIDTH // 2)
 
 
-# Главная функция, которая управляет процессом рисования стены из кирпичей
-
+# The main function that controls the process of drawing a wall of bricks
 def main():
-    init_turtle()  # Подготавливаем черепаху
-    num_rows = 20  # Количество рядов кирпичей в стене
-    num_bricks_per_row = 9  # Количество кирпичей в каждом ряду
+    init_turtle()
+    num_rows = 20
+    num_bricks_per_row = 9
 
-    for i in range(num_rows):  # Повторяем для каждого ряда
-        if i % 2 == 0:  # Если ряд четный (0, 2, 4...), рисуем ровный ряд кирпичей
+    for i in range(num_rows):
+        if i % 2 == 0:  # If the row is even (0, 2, 4...), draw an even row of bricks
             draw_row(num_bricks_per_row)
-        else:  # Если ряд нечетный (1, 3, 5...), рисуем смещенный ряд
+        else:  # If the row is odd (1, 3, 5...), draw an offset row
             draw_offset_row(num_bricks_per_row)
-        turtle.right(90)  # Поворачиваем черепаху вниз
-        turtle.forward(BRICK_HEIGHT)  # Перемещаемся на высоту кирпича вниз
-        turtle.left(90)  # Возвращаем черепаху в горизонтальное положение
+        turtle.right(90)
+        turtle.forward(BRICK_HEIGHT)
+        turtle.left(90)
 
-    turtle.done()  # Завершаем работу программы
+    turtle.done()
 
 
-# Проверяем, запущен ли файл как основной (а не импортирован в другой файл)
-if __name__ == "__main__":
-    main()  # Запускаем главную функцию
+main()
