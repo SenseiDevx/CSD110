@@ -1,16 +1,18 @@
 def fibonacci_sequence(n):
-    # Initial values of sequences
-    a = 0
-    b = 1
-    print(a)  # First integer
-    print(b)  # Second integer
+    fibonacci_number_list = [0, 1]
 
-    for _ in range(n):  # n times add numbers
-        next_number = a + b
-        print(next_number)
-        # Updating values a и b
-        a = b
-        b = next_number
+    for i in range(n - 2):
+        next_fibonacci_number = fibonacci_number_list[-1] + fibonacci_number_list[-2]
+        fibonacci_number_list.append(next_fibonacci_number)
+
+    return fibonacci_number_list
 
 
-fibonacci_sequence(23)
+def main():
+    n = 23
+    fib_list = fibonacci_sequence(n)
+    print(fib_list)
+
+
+if __name__ == "__main__":
+    main()
