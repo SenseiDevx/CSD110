@@ -1,7 +1,7 @@
 import random
 
 
-def randomlyPopulateNumbers(filename):
+def randomly_populate_numbers(filename):
     numbers_count = random.randint(50, 100)
 
     with open(filename, "w") as file:
@@ -10,30 +10,36 @@ def randomlyPopulateNumbers(filename):
             file.write(f"{number}\n")
 
 
-def computeSumofNumbersInFile(filename):
-    total_sum = 0
+def read_numbers_from_number_txt(filename):
+    numbers = []
 
     with open(filename, "r") as file:
         for line in file:
             try:
-                number = int(line.strip())
-                total_sum += number
+                numbers.append(int(line.strip()))
             except ValueError:
                 print("Debug line:", line)
                 continue
-    return total_sum
+
+    return numbers
 
 
-def appendSum(filename, sum):
-    with open(filename, "a") as file:
-        file.write(f"{sum}\n")
+def compute_average(numbers):
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
 
 
-filename = "numbers.txt"
+def main():
+    filename = "numbers.txt"
 
-randomlyPopulateNumbers(filename)
+    randomly_populate_numbers(filename)
 
-total_sum = computeSumofNumbersInFile(filename)
-print(f"The sum of the numbers in the file is {total_sum}.")
+    numbers = read_numbers_from_number_txt(filename)
+    average = compute_average(numbers)
 
-appendSum(filename, total_sum)
+    print(f"The average of the numbers in the file is {average:.2f}")
+
+
+if __name__ == "__main__":
+    main()
