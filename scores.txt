@@ -1,0 +1,64 @@
+Charlie
+73
+Thomas
+90
+Emily
+62
+Sophia
+73
+Liam
+77
+Mia
+70
+Olivia
+95
+Alice
+91
+Bogus1
+BogusScore
+Noah
+73
+Zoe
+67
+Grace
+63
+Quinn
+97
+Kate
+69
+Henry
+59
+Jack
+56
+Uma
+100
+Ryan
+73
+Bogus2
+10002
+Bob
+83
+Yara
+50
+Willow
+78
+Ivy
+76
+Bogus3
+-23
+Xander
+54
+David
+51
+Victor
+73
+Frank
+55
+Penny
+92
+Minimum score is 50
+Maximum score is 100
+Average is 73.07692307692308
+Minimum score is 50
+Maximum score is 100
+Average is 73.07692307692308
