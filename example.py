@@ -22,3 +22,10 @@
 # print(values[2:])    # (от 2-го индекса до конца)
 # print(values[::2])   # (каждый 2-й элемент)
 # print(values[::-1])  # (разворот списка)
+
+
+
+# line = input("Enter a list of numbers ----->")
+# strings = line.split(",")
+# numbers = [int(item) for item in strings if item.isdecimal()]
+# print(numbers)
